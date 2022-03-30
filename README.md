@@ -35,5 +35,7 @@ Seller:
 
 Technologies Used:
 > Forntend: HTML, CSS, Javascrpt, Bootstrap 5.0, ejs
+
 > Backend:  Node.js, express, passport
+
 > Database: MongoDB, Cloudinary
