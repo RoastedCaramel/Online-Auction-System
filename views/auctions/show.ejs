@@ -1,0 +1,90 @@
+<%- layout('layout/boilerplate') %>
+
+  <div class="row mb-5">
+    <div class="col-6">
+      <div>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+
+            <% product.images.forEach((img, i)=> {%>
+              <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                <img src="<%= img.url %>" class="d-block w-100" alt="" id="imageThumbnailForShow">
+              </div>
+              <% }) %>
+          </div>
+          <% if(product.images.length> 1) { %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <% } %>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <!-- <img src="" class="card-img-top" alt="image source not found"> -->
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Seller:
+            <a href="#">
+              <%= product.seller.username %>
+            </a>
+          </li>
+          <li class="list-group-item text-muted"><b>Seller Location: </b>
+            <%= product.location %>
+        </ul>
+        <% if(currentUser && product.seller.equals(currentUser._id)) { %>
+          <div class="card-body">
+            <a class="card-link btn btn-warning" href="/active-auctions/<%= product._id %>/edit">Edit Posting</a>
+            <form class="d-inline" action="/active-auctions/<%= product._id %>?_method=DELETE" method='POST'>
+              <button class=" btn btn-danger">Delete</button>
+            </form>
+          </div>
+          <% } %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title display-5"><b>
+              <%= product.title %>
+            </b></h5>
+          <p class="card-text">
+            <%= product.description %>
+          </p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Category: </b>
+              <%= product.category %>
+            </li>
+            <li class="list-group-item"><b>Time Left: </b>
+
+              <p id="countDownTimer"></p>
+
+            </li>
+            <% if(product.certificate !==" " ) {%>
+              <li class="list-group-item"><b>Certification: </b>
+                <a href="<%= product.certificate %>">Yes</a>
+              </li>
+              <% } %>
+              <div class="list-group-item">
+                <b>Current Price: </b>₹<%= product.price %>
+                    <!-- Have to make this into a patch request -->
+                    <form action="/active-auctions/<%= product._id %>?_method=PATCH" method=POST>
+                      <div class="col-7"><input type="number" id="price" class="form-control" aria-label="price"
+                          placeholder="0" name="newPrice" value="<%= product.price %>"></div>
+                      <button class="btn btn-primary my-2 d-inline">Place Bid +</button>
+                    </form>
+                </li>
+              </div>
+          </ul>
+        </div>
+      </div>
+    </div>
