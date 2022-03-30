@@ -1,0 +1,68 @@
+<%- layout('layout/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center display-1">New Listing</h1>
+        <div class="col-6 offset-3">
+            <form action="/active-auctions" method=POST novalidate class="validated-form" enctype="multipart/form-data">
+
+                <!-- title -->
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="product[title]" required>
+                </div>
+                <!-- location -->
+                <div class="mb-3">
+                    <label class="form-label" for="location">Enter your location</label>
+                    <input class="form-control" type="text" id="location" name="product[location]" required>
+                </div>
+                <!-- image -->
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Add Images</label>
+                    <input name="image" class="form-control" type="file" id="formFileMultiple" multiple>
+                  </div>
+                <!-- certification -->
+                <div class="mb-3">
+                    <label class="form-label" for="certificate">Certificate url</label>
+                    <input class="form-control" type="text" id="certificate" name="product[certificate]" placeholder=" ">
+                </div>
+                <!-- price -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Starting bid Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₹</span>
+                        <input type="text" id="price" class="form-control" aria-label="price" placeholder="0"
+                            name="product[price]" required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <!-- description -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="desctiption" class="form-control" type="text" name="product[description]"
+                        required></textarea>
+                </div>
+                <!-- end time -->
+                <div class="mb-3">
+                    <label class="form-label" for="endTime">Enter the date when the auction ends </label>
+                    <input class="form-control" type="text" id="endTime" name="product[endTime]" required placeholder="DD-MM-YYYY HH:MM:SS">
+                </div>
+                <!-- Category -->
+                
+
+                <div class="mb-4">
+                    <label for="category" class="Col-12 mb-1">Choose Category which defines your product</label>
+                    <select class="form-select" name="product[category]" id="catogory">
+                        <option value="collectible" selected>Collectible</option>
+                        <option value="antique">Antique</option>
+                        <option value="painting">Painting</option>
+                        <option value="sculpture">Sculpture</option>
+                    </select>
+                </div>
+
+
+
+                <div class="mb-3  offset-5"><button class="btn btn-success btn-lg">Add Auction</button></div>
+            </form>
+            <!-- <a href="/active-auctions">Back to all Auctions</a> -->
+        </div>
+    </div>

@@ -1,0 +1,81 @@
+<%- layout('layout/boilerplate') %>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1 class="display-1 mx-auto">All Active Auctions</h1>
+        </div>
+    </div>
+
+
+    <!-- Displaying categories -->
+    <div class="my-3">
+        <div class="row">
+            <div class="btn-group col-3">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                    data-bs-display="static" aria-expanded="false">
+                    Look up by Category
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-lg">
+                    <li><a class="dropdown-item" type="button"
+                            href="/active-auctions?category=collectible">Collectibles</a></li>
+                    <li><a class="dropdown-item" type="button" href="/active-auctions?category=antique">Antiques</a>
+                    </li>
+                    <li><a class="dropdown-item" type="button" href="/active-auctions?category=painting">Paintings</a>
+                    </li>
+                    <li><a class="dropdown-item" type="button" href="/active-auctions?category=sculpture">Sculptures</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- displaying all products -->
+    <% for(let product of products) {%>
+        <div class="card mb-3">
+            <div class="row">
+
+                <% if(!products) { %>
+                    <h1>Sorry no such auction found.</h1>
+                    <% }%>
+                        <!-- -md-5 img-thumbnail mx-auto rounded-->
+                        <div class="col-sm-5">
+                            <img src="<%= product.images[0].url %>" class="img-thumbnail my-2 mx-auto d-block rounded"
+                                id="imageThumbnailForIndex" alt="Image src not found">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4 class="card-title display-4">
+                                <b>
+                                    <%= product.title %>
+                                </b>
+                            </h4>
+                            <!-- <p class="card-text">
+                        <%= //product.description %>
+                    </p>
+                    <p class="card-text">
+                        Current Price: ₹<%=// product.price %>
+                    </p>
+                    <p class="card-text">
+                        End Date: <%=// product.endTime %> 
+                    </p> -->
+                            <ul class="list-group list-group-flush">
+                                <!-- <li class="list-group-item"><%= //product.description %></li> -->
+                                <li class="list-group-item">Current Price: ₹<%= product.price %>
+                                </li>
+                                <li class="list-group-item">End Date: <%=product.endTime %>
+                                </li>
+                                <li class="list-group-item"><small class="text-muted align-right">
+                                        Seller Location: <%= product.location %>
+                                    </small> </li>
+                            </ul>
+
+                            <!-- <p class="card-text">
+                                <small class="text-muted align-right">
+                                    <%= //product.location %>
+                                </small>
+                            </p> -->
+                            <a class="btn btn-success my-3" href="/active-auctions/<%= product._id %> ">View product</a>
+                        </div>
+            </div>
+        </div>
+        <% } %>

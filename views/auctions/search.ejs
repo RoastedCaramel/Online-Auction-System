@@ -1,0 +1,14 @@
+<%- layout('layout/boilerplate') %>
+
+
+    <form action="/active-auctions/search" method=POST>
+        <h1 class="display1 text-center py-4 ">Search a Listing</h1>
+
+        <div class="row">
+            <div class="col-12">
+                <input type="text" class="col-12 form-control" id="searchBar" name=searchBar>
+            </div>
+
+            <div class="mt-4"><button class="btn col-2 offset-5 btn-primary">Search</button></div>
+        </div>
+    </form>

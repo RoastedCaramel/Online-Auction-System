@@ -1,0 +1,9 @@
+#imageThumbnailForIndex{
+    max-height: 400px;
+    margin-left: auto;
+}
+#imageThumbnailForShow{
+    max-height: 75%;
+    max-width: 100%;
+
+}

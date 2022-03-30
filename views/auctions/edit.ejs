@@ -1,0 +1,85 @@
+<%- layout('layout/boilerplate') %>
+
+    <div class="row mb-5">
+        <h1 class="text-center display-1">Edit Product</h1>
+        <div class="col-6 offset-3">
+            <form action="/active-auctions/<%= product._id %>?_method=PUT" method=POST novalidate
+                class="validated-form" enctype="multipart/form-data">
+
+                <!-- title -->
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="product[title]"
+                        value="<%= product.title %>" required>
+                </div>
+                <!-- location -->
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="product[location]"
+                        value="<%= product.location %>" required>
+                </div>
+                
+                <!-- certification -->
+                <div class="mb-3">
+                    <label class="form-label" for="certificate">Certificate url</label>
+                    <input class="form-control" type="text" id="certificate" name="product[certificate]"
+                        value="<%= product.certificate %>" placeholder=" ">
+                </div>
+                <!-- price -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Starting bid Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₹</span>
+                        <input type="text" id="price" class="form-control" aria-label="price" placeholder="0"
+                            name="product[price]" value="<%= product.price %>" required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <!-- description -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="desctiption" class="form-control" type="text" name="product[description]"
+                        required><%= product.description %></textarea>
+                </div>
+                <!-- end time -->
+                <div class="mb-3">
+                    <label class="form-label" for="endTime">Enter the date when the auction ends</label>
+                    <input class="form-control" type="text" id="endTime" name="product[endTime]"
+                        value="<%= product.endTime %>" required>
+                </div>
+                <!-- Category -->
+
+                <div class="mb-4">
+                    <label for="category" class="Col-12 mb-1">Choose Category which defines your product</label>
+                    <select class="form-select" name="product[category]" id="catogory">
+
+                        <option value="collectible" <%=product.category==='collectible' ? 'selected' : ' ' %>
+                            >Collectible</option>
+                        <option value="antique" <%=product.category==='antique' ? 'selected' : ' ' %>>Antique</option>
+                        <option value="painting" <%=product.category==='painting' ? 'selected' : ' ' %>>Painting
+                        </option>
+                        <option value="sculpture" <%=product.category==='sculpture' ? 'selected' : ' ' %>>Sculpture
+                        </option>
+                    </select>
+                </div>
+                <!-- image -->
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Add More Images?</label>
+                    <input name="image" class="form-control" type="file" id="formFileMultiple" multiple>
+                  </div>
+                  <!-- <div class="mb-3">
+                      <% product.images.forEach(function(img, i) { %>
+                        <img src="<%= img.url %> " class="img-thumbnail" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" name="" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                        </div>
+                        <label for="image-<%=i%>">Delete?</label>
+                        <% }) %>  
+                  </div> -->
+
+
+                <div class="mb-3 col-2 offset-5"><button class="btn btn-warning btn-lg">Edit</button></div>
+            </form>
+            <!-- <a href="/active-auctions">Back to all Auctions</a> -->
+        </div>
+    </div>
