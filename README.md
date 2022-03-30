@@ -31,3 +31,9 @@ Seller:
 5.	Seller can view bidding information 
 6.	Seller can edit product details.
 7.	Seller can delete product details.
+
+
+Technologies Used:
+> Forntend: HTML, CSS, Javascrpt, Bootstrap 5.0, ejs
+> Backend:  Node.js, express, passport
+> Database: MongoDB, Cloudinary
